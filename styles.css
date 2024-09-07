@@ -17,17 +17,20 @@ header {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
+  background: #220c15; /* Soft Pink */
+  position: relative;
 }
 
 .navbar .logo h1 {
   margin: 0;
   font-size: 34px;
-  color: #8caab0;
+  color: #8caab0; /* Light Turquoise */
   font-weight: 700;
 }
 
@@ -40,18 +43,53 @@ header {
 .navbar nav ul li {
   display: inline;
   margin-left: 25px;
+  position: relative;
 }
 
 .navbar nav ul li a {
-  color: #dfd8d8;
+  color: #dfd8d8; /* Very Light Pink */
   text-decoration: none;
   font-size: 20px;
   font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar nav ul li a::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), rgba(255,255,255,0) 70%);
+  transition: transform 0.3s ease;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+}
+
+.navbar nav ul li a:hover::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .navbar nav ul li a:hover {
-  text-decoration: underline;
-  color: #448f50; /* Turquoise */
+  color: #ffffff; /* White */
+  background: rgba(194, 0, 0, 0.2); /* Light semi-transparent overlay */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  border-radius: 8px;
+}
+
+.navbar nav ul li a.active {
+  color: #ffffff; /* White */
+  background-color: #e0e0e0; /* Light Gray */
+}
+
+.navbar nav ul li a.active::before {
+  display: none; /* Remove hover effect on active link */
 }
 
 /* Main Content */
@@ -59,7 +97,7 @@ main {
   display: flex;
   flex: 1;
   padding: 40px;
-  background:rgb(245, 242, 242);
+  background: rgb(245, 242, 242);
   border-radius: 10px;
 }
 
@@ -76,7 +114,7 @@ aside {
 aside h2 {
   font-size: 28px;
   margin-top: 0;
-  color: #300e0e; /* Soft Pink */
+  color: #300e0e; /* Dark Red */
 }
 
 aside ul {
@@ -89,14 +127,14 @@ aside ul li {
 }
 
 aside ul li a {
-  color: #2d0404; /* Turquoise */
+  color: #2d0404; /* Dark Red */
   text-decoration: none;
   font-size: 18px;
 }
 
 aside ul li a:hover {
-  text-decoration: underline;
-  color: #ff7f7f; /* Soft Pink */
+  text-decoration: none;
+  color: #0000ee; /* Soft Pink */
 }
 
 /* Stock level colors */
@@ -161,7 +199,7 @@ aside ul li a:hover {
 
 .cards .card h3 {
   margin: 0;
-  color: #19393d; /* Turquoise */
+  color: #19393d; /* Dark Turquoise */
   font-weight: 600;
 }
 
@@ -225,7 +263,7 @@ table td {
 }
 
 table th {
-  background: #061d59; /* Soft Pink */
+  background: #061d59; /* Dark Blue */
   color: #ffffff;
   cursor: pointer;
   font-weight: 600;
@@ -244,7 +282,7 @@ table td {
 .pagination button {
   padding: 15px 30px;
   margin: 0 10px;
-  background: #760b0b; /* Turquoise */
+  background: #760b0b; /* Dark Red */
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -274,7 +312,7 @@ table td {
 
 .activity-log h2 {
   margin-top: 0;
-  color: #230303; /* Soft Pink */
+  color: #230303; /* Dark Red */
   font-weight: 600;
 }
 
