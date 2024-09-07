@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Inventory Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1>Hospital Inventory</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Suppliers</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <h2><u><b>QUICK LINKS</b></u></h2>
+            <ul>
+                <li><a href="#">View All Products</a></li>
+                <li><a href="#">Add New Product</a></li>
+                <li><a href="#">Manage Categories</a></li>
+                <li><a href="#">Manage Suppliers</a></li>
+                <li><a href="#">Inventory Reports</a></li>
+                <li><a href="#">User Management</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <h2>Dashboard</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Products</h3>
+                    <p id="total-products">150</p>
+                </div>
+                <div class="card">
+                    <h3>Total Categories</h3>
+                    <p id="total-categories">10</p>
+                </div>
+                <div class="card">
+                    <h3>Total Suppliers</h3>
+                    <p id="total-suppliers">25</p>
+                </div>
+                <div class="card">
+                    <h3>Low Stock Alerts</h3>
+                    <p id="low-stock-alerts">5</p>
+                </div>
+            </div>
+
+            <div class="charts">
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <section class="inventory">
+                <h2>Inventory List</h2>
+                <div class="filters">
+                    <input type="text" id="search" placeholder="Search products...">
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <!-- Category options will be added here -->
+                    </select>
+                    <select id="supplier-filter">
+                        <option value="">All Suppliers</option>
+                        <!-- Supplier options will be added here -->
+                    </select>
+                </div>
+                <table id="inventory-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">ID</th>
+                            <th onclick="sortTable(1)">Product Name</th>
+                            <th onclick="sortTable(2)">Category</th>
+                            <th onclick="sortTable(3)">Supplier</th>
+                            <th onclick="sortTable(4)">Stock Level</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamic content will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button id="prev-btn">Previous</button>
+                    <span id="page-info">Page 1</span>
+                    <button id="next-btn">Next</button>
+                </div>
+            </section>
+
+            <section class="activity-log">
+                <h2>Recent Activity</h2>
+                <ul>
+                    <li>Added new product: Product F</li>
+                    <li>Updated stock level for Product A</li>
+                    <li>Removed expired product: Product C</li>
+                    <!-- More activity items -->
+                </ul>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Hospital Inventory Management System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
