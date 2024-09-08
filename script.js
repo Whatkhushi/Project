@@ -1,15 +1,19 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const inventoryData = [
-        { id: 1, name: 'Product A', category: 'Category 1', supplier: 'Supplier X', stock: 50 },
-        { id: 2, name: 'Product B', category: 'Category 2', supplier: 'Supplier Y', stock: 30 },
-        { id: 3, name: 'Product C', category: 'Category 1', supplier: 'Supplier Z', stock: 5 },  // Low stock
-        { id: 4, name: 'Product D', category: 'Category 2', supplier: 'Supplier X', stock: 40 },
-        { id: 5, name: 'Product E', category: 'Category 1', supplier: 'Supplier Y', stock: 60 },
-        // Add more items as needed
+        { id: 1, name: 'Paracetamol', category: 'Analgesics', supplier: 'MedSupply Co.', stock: 120 },
+        { id: 2, name: 'Aspirin', category: 'Analgesics', supplier: 'PharmaWorld', stock: 75 },
+        { id: 3, name: 'Metformin', category: 'Antidiabetics', supplier: 'HealthLife', stock: 40 },  // Low stock
+        { id: 4, name: 'Insulin', category: 'Antidiabetics', supplier: 'MediPlus', stock: 15 },  // Very low stock
+        { id: 5, name: 'Atorvastatin', category: 'Cholesterol Meds', supplier: 'HealthLife', stock: 60 },
+        { id: 6, name: 'Amoxicillin', category: 'Antibiotics', supplier: 'MedSupply Co.', stock: 200 },
+        { id: 7, name: 'Omeprazole', category: 'Gastrointestinal', supplier: 'PharmaWorld', stock: 85 },
+        { id: 8, name: 'Ciprofloxacin', category: 'Antibiotics', supplier: 'MedSupply Co.', stock: 45 },
+        // Add more medicines as needed
     ];
 
-    const categories = ['Category 1', 'Category 2'];
-    const suppliers = ['Supplier X', 'Supplier Y', 'Supplier Z'];
+    const categories = ['Analgesics', 'Antidiabetics', 'Cholesterol Meds', 'Antibiotics', 'Gastrointestinal'];
+    const suppliers = ['MedSupply Co.', 'PharmaWorld', 'HealthLife', 'MediPlus'];
 
     // Populate category and supplier filters
     const categoryFilter = document.getElementById('category-filter');
@@ -56,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
     new Chart(pieCtx, {
         type: 'pie',
         data: {
-            labels: ['Category 1', 'Category 2'],
+            labels: ['Analgesics', 'Antidiabetics', 'Cholesterol Meds', 'Antibiotics', 'Gastrointestinal'],
             datasets: [{
-                data: [50, 30], // Example data
-                backgroundColor: ['#3d0510', '#5a5650'], // Light Pink and Turquoise
+                data: [195, 55, 60, 245, 85], // Stock data for each category
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff'], // Custom colors
             }],
         },
         options: {
@@ -93,13 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Chart.js configuration for bar chart with dynamic colors
     const barCtx = document.getElementById('barChart').getContext('2d');
     const stockLevels = inventoryData.map(item => item.stock);
-    const productNames = inventoryData.map(item => item.name);
+    const medicineNames = inventoryData.map(item => item.name);
     const stockColors = stockLevels.map(stock => getStockColor(stock));
 
     new Chart(barCtx, {
         type: 'bar',
         data: {
-            labels: productNames,
+            labels: medicineNames,
             datasets: [{
                 label: 'Stock Level',
                 data: stockLevels,
@@ -138,19 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         },
     });
-    
-
-
-
-
-
-
-  
-
-
-
-
-
 
     // Sorting table
     window.sortTable = (n) => {
@@ -189,26 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
-    function sortTable(columnIndex) {
-        const table = document.getElementById("inventory-table");
-        let rows = Array.from(table.rows).slice(1);
-        let sortedRows;
-    
-        const isAscending = table.querySelectorAll("th")[columnIndex].classList.contains('sorted-asc');
-        
-        if (isAscending) {
-            sortedRows = rows.sort((a, b) => a.cells[columnIndex].innerText.localeCompare(b.cells[columnIndex].innerText));
-            table.querySelectorAll("th").forEach(th => th.classList.remove('sorted-asc', 'sorted-desc'));
-            table.querySelectorAll("th")[columnIndex].classList.add('sorted-desc');
-        } else {
-            sortedRows = rows.sort((a, b) => b.cells[columnIndex].innerText.localeCompare(a.cells[columnIndex].innerText));
-            table.querySelectorAll("th").forEach(th => th.classList.remove('sorted-asc', 'sorted-desc'));
-            table.querySelectorAll("th")[columnIndex].classList.add('sorted-asc');
-        }
-    
-        table.tBodies[0].append(...sortedRows);
-    }
-    
 
     // Pagination logic
     let currentPage = 1;
@@ -261,4 +232,59 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPage = 1;
         displayPage(currentPage);
     }
+    // Sample medicine-related recent activity data
+const recentActivityData = [
+    { medicine: 'Ampicillin', action: 'added', details: 'Ampicillin was added to the inventory.', time: '2 hours ago' },
+    { medicine: 'Paracetamol', action: 'updated stock', details: 'Stock level for Paracetamol was updated.', time: '5 hours ago' },
+    { medicine: 'Amoxicillin', action: 'removed', details: 'Amoxicillin expired and was removed from the inventory.', time: '1 day ago' },
+    { medicine: 'Ciprofloxacin', action: 'dispensed', details: '20 units of Ciprofloxacin were dispensed to ward 3.', time: '3 hours ago' },
+    { medicine: 'Ibuprofen', action: 'low stock', details: 'Ibuprofen stock level is critically low (only 10 units remaining).', time: '6 hours ago' }
+];
+
+// Function to render the recent activity
+function renderRecentActivity(activityData) {
+    const activityTimeline = document.querySelector('.activity-timeline');
+    activityTimeline.innerHTML = ''; // Clear previous activity
+
+    activityData.forEach(activity => {
+        const activityCard = document.createElement('div');
+        activityCard.classList.add('activity-card');
+
+        let icon;
+        switch (activity.action) {
+            case 'added':
+                icon = 'fa-capsules';
+                break;
+            case 'updated stock':
+                icon = 'fa-sync-alt';
+                break;
+            case 'removed':
+                icon = 'fa-trash';
+                break;
+            case 'dispensed':
+                icon = 'fa-capsules';
+                break;
+            case 'low stock':
+                icon = 'fa-exclamation-triangle';
+                break;
+            default:
+                icon = 'fa-info-circle';
+        }
+
+        activityCard.innerHTML = `
+            <div class="activity-icon">
+                <i class="fa-solid ${icon}"></i>
+            </div>
+            <div class="activity-details">
+                <h4>${activity.action.charAt(0).toUpperCase() + activity.action.slice(1)} Medicine</h4>
+                <p>${activity.details}</p>
+                <span class="activity-time">${activity.time}</span>
+            </div>
+        `;
+        activityTimeline.appendChild(activityCard);
+    });
+    
+}
+// Call the function to render the activity on page load
+renderRecentActivity(recentActivityData);
 });
