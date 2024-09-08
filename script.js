@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labels: ['Category 1', 'Category 2'],
             datasets: [{
                 data: [50, 30], // Example data
-                backgroundColor: ['#ff9f9f', '#00aaff'], // Light Pink and Turquoise
+                backgroundColor: ['#3d0510', '#5a5650'], // Light Pink and Turquoise
             }],
         },
         options: {
@@ -138,6 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         },
     });
+    
+
+
+
+
+
+
+  
+
+
+
+
+
 
     // Sorting table
     window.sortTable = (n) => {
@@ -176,6 +189,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
+    function sortTable(columnIndex) {
+        const table = document.getElementById("inventory-table");
+        let rows = Array.from(table.rows).slice(1);
+        let sortedRows;
+    
+        const isAscending = table.querySelectorAll("th")[columnIndex].classList.contains('sorted-asc');
+        
+        if (isAscending) {
+            sortedRows = rows.sort((a, b) => a.cells[columnIndex].innerText.localeCompare(b.cells[columnIndex].innerText));
+            table.querySelectorAll("th").forEach(th => th.classList.remove('sorted-asc', 'sorted-desc'));
+            table.querySelectorAll("th")[columnIndex].classList.add('sorted-desc');
+        } else {
+            sortedRows = rows.sort((a, b) => b.cells[columnIndex].innerText.localeCompare(a.cells[columnIndex].innerText));
+            table.querySelectorAll("th").forEach(th => th.classList.remove('sorted-asc', 'sorted-desc'));
+            table.querySelectorAll("th")[columnIndex].classList.add('sorted-asc');
+        }
+    
+        table.tBodies[0].append(...sortedRows);
+    }
+    
 
     // Pagination logic
     let currentPage = 1;

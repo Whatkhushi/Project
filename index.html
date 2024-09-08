@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Inventory Management Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -11,7 +13,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <h1>Hospital Inventory</h1>
+                <h1><i class="fa-regular fa-hospital"></i>   Hospital Inventory</h1>
             </div>
             <nav>
                 <ul>
@@ -28,15 +30,18 @@
     </header>
 
     <main>
-        <aside>
-            <h2><u><b>QUICK LINKS</b></u></h2>
-            <ul>
-                <li><a href="#">View All Products</a></li>
-                <li><a href="#">Add New Product</a></li>
-                <li><a href="#">Manage Categories</a></li>
-                <li><a href="#">Manage Suppliers</a></li>
-                <li><a href="#">Inventory Reports</a></li>
-                <li><a href="#">User Management</a></li>
+        <aside id="quick-links">
+            <div class="sidebar-header">
+                <h2><u><b>QUICK LINKS</b></u></h2>
+                <div id="resizable-handle"></div>
+            </div>
+            <ul class="quick-links-list">
+                <li><a href="#"><i class="fa-solid fa-box"></i> View All Products</a></li>
+                <li><a href="#"><i class="fa-solid fa-plus-circle"></i> Add New Product</a></li>
+                <li><a href="#"><i class="fa-solid fa-tags"></i> Manage Categories</a></li>
+                <li><a href="#"><i class="fa-solid fa-truck"></i> Manage Suppliers</a></li>
+                <li><a href="#"><i class="fa-solid fa-chart-bar"></i> Inventory Reports</a></li>
+                <li><a href="#"><i class="fa-solid fa-users"></i> User Management</a></li>
             </ul>
         </aside>
 
@@ -105,21 +110,78 @@
                 </div>
             </section>
 
-            <section class="activity-log">
+            <!-- <section class="activity-log">
                 <h2>Recent Activity</h2>
                 <ul>
                     <li>Added new product: Product F</li>
                     <li>Updated stock level for Product A</li>
                     <li>Removed expired product: Product C</li>
-                    <!-- More activity items -->
+                    
                 </ul>
+            </section> -->
+            <section class="activity-log full-width">
+                <h2>Recent Activity</h2>
+                <div class="activity-timeline">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Added New Product</h4>
+                            <p>Product F was added to inventory.</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+        
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-sync-alt"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Updated Stock</h4>
+                            <p>Stock level for Product A was updated.</p>
+                            <span class="activity-time">5 hours ago</span>
+                        </div>
+                    </div>
+        
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Removed Expired Product</h4>
+                            <p>Product C was removed due to expiration.</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                </div>
             </section>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Hospital Inventory Management System</p>
+        <div class="footer-container">
+            <div class="footer-column about-us">
+                <h3>About Us</h3>
+                <p>We are dedicated to improving hospital inventory management through innovative solutions and technologies. Our team strives to provide the best tools for efficient and effective management.</p>
+            </div>
+            <div class="footer-column contact-us">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-phone"></i> +1-800-123-4567</p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@hospitalinventory.com">info@hospitalinventory.com</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Hospital St, City, Country</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hospital Inventory Management System | Designed by Your Name</p>
+        </div>
     </footer>
+    
+   
+ 
+
+ 
+
 
     <script src="script.js"></script>
 </body>

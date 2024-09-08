@@ -8,14 +8,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-/* Header */
+/* header */
 header {
   background: #220c15; /* Soft Pink */
   color: #ffffff;
-  padding: 20px 0;
+  padding: 23px  0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 
 /* Navbar Styles */
 .navbar {
@@ -30,7 +30,7 @@ header {
 .navbar .logo h1 {
   margin: 0;
   font-size: 34px;
-  color: #8caab0; /* Light Turquoise */
+  color: #bbbdc9; /* Light Turquoise */
   font-weight: 700;
 }
 
@@ -109,12 +109,14 @@ aside {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   margin-right: 40px;
   border-radius: 12px;
+  border: 2px solid #a77d7d; /* Adds a border to the aside */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 aside h2 {
   font-size: 28px;
   margin-top: 0;
-  color: #300e0e; /* Dark Red */
+  color: #300e0e; 
 }
 
 aside ul {
@@ -127,15 +129,18 @@ aside ul li {
 }
 
 aside ul li a {
-  color: #2d0404; /* Dark Red */
+  color: #2d0404; 
   text-decoration: none;
   font-size: 18px;
 }
 
 aside ul li a:hover {
   text-decoration: none;
-  color: #0000ee; /* Soft Pink */
+  color: #6a1b1b; 
 }
+
+
+
 
 /* Stock level colors */
 .stock-level {
@@ -143,15 +148,15 @@ aside ul li a:hover {
 }
 
 .stock-level.low {
-  color: #ff6347; /* Tomato */
+  color: #662115; /* Tomato */
 }
 
 .stock-level.moderate {
-  color: #ffeb3b; /* Yellow */
+  color: #9d974d; /* Yellow */
 }
 
 .stock-level.sufficient {
-  color: #32cd32; /* Lime Green */
+  color: #347334; /* Lime Green */
 }
 
 /* Alert styles */
@@ -223,6 +228,120 @@ aside ul li a:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   padding: 25px;
 }
+.chart-container {
+  width: 100%;
+  height: 300px;
+  margin: 20px 0;
+}
+
+#pieChart, #barChart, #lineChart {
+  width: 100%;
+  height: 100%;
+}
+ .footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  margin:0;
+  background-color: #381212;
+}
+
+.footer-column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.footer-column h3 {
+  margin-top: 0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-column form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column form input[type="email"] {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.footer-column form button {
+  padding: 5px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-column .social-icon {
+  margin-right: 10px;
+}
+
+.footer-column .social-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px;
+  background-color: #3e1010;
+  color: white;
+} 
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #110202;
+}
+
+.footer-column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.footer-column h3 {
+  margin-top: 0;
+}
+
+.footer-column p {
+  margin: 0;
+}
+
+.footer-column .social-icon {
+  margin-right: 10px;
+ }
+
+.footer-column .social-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px;
+  background-color: #5c2929;
+  color: white;
+ } 
+
+
+
+
 
 /* Filters */
 .filters {
@@ -246,63 +365,238 @@ aside ul li a:hover {
   width: 240px;
 }
 
-/* Table */
-table {
+ table { 
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-table th,
-table td {
-  padding: 20px;
-  border: 1px solid #ddd;
+table thead {
+  background-color: #3c061b;
+  color: white;
 }
 
-table th {
-  background: #061d59; /* Dark Blue */
-  color: #ffffff;
+table th, table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+  background-color: #c7d7e1;
   cursor: pointer;
-  font-weight: 600;
 }
 
-table td {
+table th.sortable {
+  cursor: pointer;
+}
+
+/* table th.sortable:after {
+  content: '\25B2'; 
+  padding-left: 10px;
+  font-size: 12px;
+  color: white;
+} */
+
+table th.sortable.sorted-asc:after {
+  content: '\25B2'; 
+}
+
+table th.sortable.sorted-desc:after {
+  content: '\25BC'; 
+}
+
+
+
+/* Stock Level with Animated Progress Bars */
+.stock-bar-container {
+  height: 24px;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stock-bar {
+  height: 100%;
+  line-height: 24px;
+  border-radius: 5px;
   text-align: center;
+  color: white;
+  font-weight: bold;
+  animation: growBar 2s ease-out;
+}
+
+.stock-low {
+  background-color: red;
+  width: 20%;
+}
+
+.stock-moderate {
+  background-color: orange;
+  width: 50%;
+}
+
+.stock-high {
+  background-color: green;
+  width: 80%;
+}
+
+@keyframes growBar {
+  from {
+      width: 0;
+  }
+  to {
+      width: inherit;
+  }
+}
+
+/* Tooltips for Action Icons */
+.action-icons i {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #666;
+  position: relative;
+}
+
+.action-icons i:hover {
+  color: #6f5695;
+}
+
+.action-icons i:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  font-size: 14px;
+  width: 100px;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
 /* Pagination */
 .pagination {
-  text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .pagination button {
-  padding: 15px 30px;
-  margin: 0 10px;
-  background: #760b0b; /* Dark Red */
-  color: #ffffff;
+  padding: 8px 16px;
   border: none;
-  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 .pagination button:hover {
-  background: #0097a7; /* Darker Turquoise */
-  transform: scale(1.05);
+  background-color: #45a049;
 }
 
 .pagination button:disabled {
-  background: #ddd;
-  color: #aaa;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
+/* Hover Effect on Rows */
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #eef;
+  transform: scale(1.02);
+  transition: all 0.3s;
+}
+
+/* Stock Level Progress Bars */
+.stock-bar {
+  height: 20px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.stock-bar > div {
+  height: 100%;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.stock-low {
+  width: 25%;
+  background-color: red;
+}
+
+.stock-moderate {
+  width: 50%;
+  background-color: yellow;
+  color: black;
+}
+
+.stock-high {
+  width: 80%;
+  background-color: green;
+}
+
+/* Action Icons */
+.action-icons i {
+  margin-right: 10px;
+  cursor: pointer;
+  color: #333;
+  font-size: 20px;
+}
+
+.action-icons i:hover {
+  color: #93396b;
+}
+
+/* Pagination Styling */
+/* .pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  border: none;
+  background-color: #480d14;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #45a049;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+} */
+
+
 /* Activity Log */
-.activity-log {
+/* .activity-log {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -312,7 +606,7 @@ table td {
 
 .activity-log h2 {
   margin-top: 0;
-  color: #230303; /* Dark Red */
+  color: #230303; 
   font-weight: 600;
 }
 
@@ -329,15 +623,95 @@ table td {
 
 .activity-log ul li:last-child {
   border-bottom: none;
+} */
+ /* Activity Log Styles */
+.activity-log {
+  margin-top: 40px;
 }
 
+.activity-log h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #2e0d0d;
+}
+
+.activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activity-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: scale(1.05);
+}
+
+.activity-icon {
+  background-color: #001301;
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-icon i {
+  font-size: 24px;
+}
+
+.activity-details h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #2a1414;
+}
+
+.activity-details p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.activity-time {
+  font-size: 14px;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .activity-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .activity-icon {
+      margin-bottom: 15px;
+  }
+}
+
+
 /* Footer */
-footer {
-  background: #220c15; /* Soft Pink */
+ footer { 
+  background: #220c15; 
   color: #ffffff;
   text-align: center;
   padding: 20px;
   position: relative;
   bottom: 0;
   width: 100%;
+} 
+.contact-us a {
+    color: #a2405d
 }
